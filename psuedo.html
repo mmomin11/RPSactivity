@@ -43,11 +43,13 @@
 
 var userChoice = prompt("Pick one. r, p, or s");
 
-var userInput = userChoice.toLowerCase;
+var userInput = userChoice.toLowerCase();
 
 var computerChoice = ["r", "p", "s"];
 
-var randomChoice = Math.floor(Math.random(computerChoice))
+var randomChoice = computerChoice[Math.floor(Math.random()*computerChoice.length)];
+
+
 
     </script>
 
