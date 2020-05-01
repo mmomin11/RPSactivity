@@ -1,65 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=
-    , initial-scale=1.0"
-    />
-    <title>Document</title>
+    <title>Rock Paper Scissors Part 6</title>
   </head>
   <body>
-    <script>
-            /*   ### Rock Paper Scissors Pseudocode
+    <script type="text/javascript">
+      // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
+      var computerChoices = ["r", "p", "s"];
 
-      1. Prompt user to enter r, p, or s representing rock, paper, or scissors.
+      // Creating variables to hold the number of wins, losses, and ties. They start at 0.
+      var wins = 0;
+      var losses = 0;
+      var ties = 0;
 
-      2. Computer chooses a random value in a list of r, p, or s.
+      for (var i = 0; i < 4; i++) {
+        // Randomly chooses a choice from the options array. This is the Computer's guess.
+        var computerGuess =
+          computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
-      3. We determine if the user wins or not.
+        // Collect the user's response and convert to lower case.
+        var userGuess = prompt("Enter r, p, or s to play!");
+        userGuess = userGuess.toLowerCase();
 
-         * If user picks rock and if computer picks scissors then user wins.
+        // Only run game logic if user chose a valid option
+        if (userGuess === "r" || userGuess === "p" || userGuess === "s") {
+          alert("The computer chose " + computerGuess);
 
-         * If user picks rock and if computer picks paper then user loses.
+          // Win/lose conditions:
+          if (
+            (userGuess === "r" && computerGuess === "s") ||
+            (userGuess === "s" && computerGuess === "p") ||
+            (userGuess === "p" && computerGuess === "r")
+          ) {
+            wins++;
+            alert("You've won " + wins + " time(s)!");
+          } else if (userGuess === computerGuess) {
+            ties++;
+            alert("You've tied " + ties + " time(s).");
+          } else {
+            losses++;
+            alert("You've lost " + losses + " time(s).");
+          }
+        }
+      }
 
-         * If user picks scissors and if computer picks rock then user loses.
-
-         * If user picks scissors and if computer picks paper then user wins.
-
-         * If user picks paper and if computer picks rock then user wins.
-
-         * If user picks paper and if computer picks scissors then user loses.
-
-         * If user picks the same as computer then they tie.
-
-      4. We then add to their score.
-
-         * If user wins then we add one to their wins.
-
-         * If user loses then we add one to their losses.
-
-         * If user ties then we add one to their ties.
-
-      5. Prompt user to play again.
-      */
-
-            var userChoice = prompt("Pick one. r, p, or s");
-
-            var userInput = userChoice.toLowerCase();
-
-            var computerChoice = ["r", "p", "s"];
-
-            var randomChoice =
-              computerChoice[Math.floor(Math.random() * computerChoice.length)];
-
-            var win = 0;
-            var loss = 0;
-            var tie = 0;
-
-            for(var i = 0;i<5;i++){
-                if (userChoice === "r"
-            }
+      // When the game is over, alert the totals to the user. We can use the \n character to make a line break.
+      alert(
+        "Total wins: " +
+          wins +
+          "\nTotal ties: " +
+          ties +
+          "\nTotal losses: " +
+          losses
+      );
     </script>
   </body>
 </html>
